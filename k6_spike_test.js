@@ -4,8 +4,8 @@ import { sleep } from "k6";
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 import { textSummary } from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
 
-const appName = "springbootjpagraalvmnative";
-const url = "http://localhost:5000/api";
+const appName = "djangorest";
+const url = "http://localhost:8000/api";
 const testResultFolder = `test_result/${appName}`;
 
 export const options = {
@@ -29,7 +29,7 @@ export default () => {
 
 export function handleSummary(data) {
   return {
-    [`${testResultFolder}/spike_test.html`]: htmlReport(data),
+    [`${testResultFolder}/spike_test_uvicorn.html`]: htmlReport(data),
     stdout: textSummary(data, { indent: " ", enableColors: true }),
   };
 }
